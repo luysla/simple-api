@@ -23,12 +23,12 @@ function listTasks(req, resp){
 //Edit task
 function updateTask(req, resp){
     const id = req.params.id
-    const newTask = req.body
+    const idObject = mongoose.Types.ObjectId(id);
+    const task = req.body
 
-    /* model.findByIdAndUpdate(id,task)
+    model.findByIdAndUpdate(idObject)
     .then(resp.status(200).json({task,'message':'Task updated'}))
-    .catch(error => resp.status(400).json(error, { 'message':'Task with this id not found'})) */
-   
+    .catch(resp.status(400).json({ 'message':'Task with this id not found'}))
 }
 
 module.exports = { addTask , listTasks, updateTask }
